@@ -1,54 +1,57 @@
 import junit.framework.TestCase;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.lang.reflect.Executable;
+
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 public class CalculadoraTeste extends TestCase {
 
+	private Calculadora calc;
+	
+	@BeforeEach
+	public void setUp() {
+		calc = new Calculadora();
+	}
+	
+	@Test
 	public void testaSoma() 
 	{
 		double valor1 = 10;
 		double valor2 = 5;
 		double resultadoEsperado = 15;
-		Calculadora Teste = new Calculadora(valor1,valor2);
-		double resultadoReal = Teste.getSoma();
+		double resultadoReal = calc.getSoma(valor1,valor2);
 		assertEquals(resultadoEsperado, resultadoReal);
 		
 	}
+	
+	@Test
 	public void testaSubtracao() throws ValorMenorZeroException
 	{
 		double valor1 = 10;
-		double valor2 = 5;
-		double resultadoEsperado = 5;
-		Calculadora Teste = new Calculadora(valor1,valor2);
-		double resultadoReal = Teste.getSubtracao();
-		if(resultadoReal < 0) 
-		{
-			throw new ValorMenorZeroException();
-		}
-		else 
-		{
-		assertEquals(resultadoEsperado, resultadoReal);
-		}
+		double valor2 = 15;
+		Throwable ValorMenorZeroException = assertThrows(ValorMenorZeroException.class, () -> { calc.getSubtracao(valor1,valor2);});
 	}
 	
-	public void testaMultiplicacao() 
+	public void testaMultiplicacao()
 	{
 		double valor1 = 10;
 		double valor2 = 5;
-		double resultadoEsperado = 50;
-		Calculadora Teste = new Calculadora(valor1,valor2);
-		double resultadoReal = Teste.getMultiplicacao();
+		double resultadoEsperado = 50;;
+		double resultadoReal = calc.getMultiplicacao(valor1,valor2);
 		assertEquals(resultadoEsperado, resultadoReal);
 		
 	}
 	
+	@Test
 	public void testaDivisao() 
 	{
 		double valor1 = 10;
 		double valor2 = 5;
 		double resultadoEsperado = 2;
-		Calculadora Teste = new Calculadora(valor1,valor2);
-		double resultadoReal = Teste.getDivisao();
+		double resultadoReal = calc.getDivisao(valor1,valor2);
 		assertEquals(resultadoEsperado, resultadoReal);
 		
 	}

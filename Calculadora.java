@@ -2,31 +2,23 @@
 
 public class Calculadora 
 {
-	double valor1;
-	double valor2;
 	
-	public Calculadora(double valor1,double valor2) 
-	{	
-		this.valor1 = valor1;
-		this.valor2 = valor2;
-	}
-	
-	public double getSoma() 
+	public double getSoma(double valor1,double valor2) 
 	{
-		double resultado = this.valor1 + this.valor2;
+		double resultado = valor1 + valor2;
 		return resultado;
 	}
-	public double getSubtracao() 
+	public double getSubtracao(double valor1,double valor2) 
 	{
-		double resultado = this.valor1 - this.valor2;
+		double resultado = valor1 - valor2;
 		return resultado;
-	}public double getMultiplicacao() 
+	}public double getMultiplicacao(double valor1,double valor2) 
 	{
-		double resultado = this.valor1 * this.valor2;
+		double resultado = valor1 * valor2;
 		return resultado;
-	}public double getDivisao() 
+	}public double getDivisao(double valor1,double valor2) 
 	{
-		double resultado = this.valor1 / this.valor2;
+		double resultado = valor1 /valor2;
 		return resultado;
 	}
 	
